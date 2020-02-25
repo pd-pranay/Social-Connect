@@ -331,6 +331,7 @@ router.get('/github/:username', (req, res) => {
             headers: {
                 'user-agent': 'node.js'
             }
+
         };
 
         request(options, (error, response, body) => {
