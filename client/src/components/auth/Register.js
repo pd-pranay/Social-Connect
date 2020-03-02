@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 // import axios from 'axios';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+
 const Register = (props) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -20,6 +22,7 @@ const Register = (props) => {
             props.setAlert("Not MAtch", "danger");
         } else {
             console.log("Match", formData);
+            props.register({ name, email, password });
             // const newUser = {
             //     name,
             //     email,
@@ -94,8 +97,10 @@ const Register = (props) => {
     );
 }
 
+
 Register.propTypes = {
     //ptfr
+    register: PropTypes.func.isRequired,
     setAlert: PropTypes.func.isRequired,
 }
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
