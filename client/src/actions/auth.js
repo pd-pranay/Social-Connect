@@ -5,7 +5,8 @@ import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
 // load user 
-// refreshing of token
+// refreshing of token/
+// load token form storage  and send to server for check
 export const loadUser = () => async dispatch => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
